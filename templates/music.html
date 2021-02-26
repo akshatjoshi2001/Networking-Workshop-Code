@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block body %}
+    <h2>SHAASTRA 2020</h2>
+    <p>MUSIC PLAYER:</p>
+    <audio controls="controls" autoplay="autoplay"></audio>
+    <ul>
+    {% for song in songs %}
+        <li><a href="javascript:void(0);">{{song}}</a></li>
+    {% endfor %}
+    </ul>
+
+    <script type='text/javascript'>
+        {% for song in songs %} 
+            $('li').click(function(){
+                var str = $(this).text()
+                $('audio').attr('src', '/static/music/'+str);
+            });
+        {% endfor %}
+    </script>
+{% endblock %}
+
